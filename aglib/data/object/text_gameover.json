@@ -1,0 +1,11 @@
+{
+    "template": "text",
+    "color":    [128,0,0],
+    "offset":   [0,-64],
+    "actions":  [ "move_random", "collide_edge" ],
+    "cursor":   true,
+
+    "text_size":    56,
+    "text_content": "Game Over!"
+}
+

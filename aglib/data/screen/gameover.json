@@ -1,0 +1,9 @@
+{
+    "objects":  [ "map", "text_gameover" ],
+    "controls": {
+        "return":   "new_game",
+        "escape":   "quit",
+        "up":       "menu_up",
+        "down":     "menu_down" }
+}
+
