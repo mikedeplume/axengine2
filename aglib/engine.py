@@ -92,7 +92,7 @@ class Engine(object):
                     _type = "keyup"
 
 
-                if k in State.controls:
+            if k in State.controls:
                 if self._last_joystick_action:
                     sprite = State.joystick
                     if _type == "keyup":
@@ -100,21 +100,20 @@ class Engine(object):
                 else:
                     sprite = State.cursor
                     control = getattr(actions, State.controls[k])
+
                 if _type == "keydown":
                         State.pressed.append(control)
                         ctrl = State.controls[k]
                         if ctrl in cursor_keys:
-                        control (sprite)
+                            control (sprite)
                         else:
                             control(State.screen)
-                if _type == "keyup":
+                elif _type == "keyup":
                         if control in State.pressed:
                             del State.pressed[State.pressed.index(control)]
                         actions.move_stop(sprite)
-                            if State.pressed:
+                        if State.pressed:
                             State.pressed[-1](sprite)
-
-
 
 
     def update(self):
