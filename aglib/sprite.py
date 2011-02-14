@@ -99,9 +99,25 @@ class AnimatedSprite(Sprite):
 class Map(Sprite):
     def __init__(self, obj):
         self.data = obj
+        self.grid = {}
         Sprite.__init__(self)
         if "map_tiles" in obj:
             self.create_tiles()
+
+    def get_tile(self, col, row):
+        return self.grid[(col, row)]
+
+    def get_collidable_sprites(self):
+        #FIXME: look up collidable sprites in a specific region
+
+        enterable_ts = []
+        nonenterable_ts = []
+        for pos, tile in self.grid.items():
+            if tile.can_enter():
+                enterable_ts.append(tile)
+            else:
+                nonenterable_ts.append(tile)
+        return nonenterable_ts
 
     def create_tiles(self):
         tiles = self.data['map_tiles']
@@ -111,7 +127,8 @@ class Map(Sprite):
             for x in tiles[row]:
                 obj = State.objects[key[x]]
                 offset = (col * obj['size'][0], row * obj['size'][1])
-                tile = Terrain(obj)
+                tile = Terrain(obj, offset)
+                self.grid[(col, row)] = tile
                 self.image.blit(tile.image, offset)
                 col += 1
             col = 0
@@ -119,10 +136,16 @@ class Map(Sprite):
 
 
 class Terrain(AnimatedSprite):
-    def __init__(self, obj):
+    def __init__(self, obj, offset):
         self.data = obj
         AnimatedSprite.__init__(self)
         self.switch_image(0,0)
+
+        self.rect.topleft = offset
+
+    def can_enter(self):
+        e = self.data['can_enter']
+        return e
 
 
 class Character(AnimatedSprite):

@@ -19,6 +19,17 @@ def collide_player(obj):
         if rect.colliderect(obj.rect):
             move_stop(obj)
 
+def collide_terrain(player):
+    """Collide player with the world"""
+    map = list(State.groups['map'])[0]
+    for tile in map.get_collidable_sprites():
+        if player.rect.colliderect(tile.rect):
+            move_stop(player)
+
+def game_over():
+    return
+    State.screen.switch('gameover')
+
 def move_up(obj):
     obj.stopped = False
     obj.dir = 3

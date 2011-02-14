@@ -20,7 +20,10 @@ def decode_data(data):
     """Decode the data of a JSON object into a Python dictionary."""
 
     file = open(data).read()
-    return JSONDecoder().decode(file)
+    try:
+        return JSONDecoder().decode(file)#
+    except ValueError, e:
+        raise ValueError("Error parsing JSON in '%s': %s" % (data, e))
 
 def load_object(name):
     """Load a game object and recursively set its inherited attributes.
