@@ -4,7 +4,7 @@
     "size":         [32,48],
     "align":        "tile",
     "image":        "char",
-    "actions":      [ "collide_edge" ],
+    "actions":      [ "collide_edge", "collide_terrain"],
 
     "char_hp":          [1,1],
     "char_mp":          [0,0],

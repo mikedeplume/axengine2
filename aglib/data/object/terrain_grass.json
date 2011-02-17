@@ -1,4 +1,5 @@
 {
     "template": "terrain",
-    "image":    "terrain_grass"
+    "image":    "terrain_grass",
+    "can_enter": true
 }
