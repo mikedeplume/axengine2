@@ -154,6 +154,7 @@ class Character(AnimatedSprite):
         AnimatedSprite.__init__(self)
         self.alpha = -1
         self.switch_image(self.dir, 1)
+        self.money = 0
 
 
 class Player(Character):
@@ -175,3 +176,10 @@ class Text(Sprite):
         font = util.load_font(obj)
         self.image = font.render(obj['text_content'], True, obj['color'])
         Sprite.__init__(self)
+
+class Treasure(AnimatedSprite):
+    def __init__(self, obj):
+        self.data = obj
+        AnimatedSprite.__init__(self)
+        self.alpha = -1
+        self.switch_image(0,0)

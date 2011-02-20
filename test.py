@@ -9,5 +9,8 @@ game = aglib.Engine('demo')
 # a few instances of a monster object, each starting in a random location.
 #~ game.add_object('world', 'char_monster', 20, 'random')
 
+# Add a treasure object
+game.add_object('world', 'treasure', 3, 'random')
+
 # Run the engine starting at the 'title' screen.
 game.run('title')

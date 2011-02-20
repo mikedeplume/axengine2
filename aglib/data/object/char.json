@@ -11,6 +11,7 @@
     "char_atk":         1,
     "char_def":         1,
     "char_items":       [],
-    "char_spells":      []
+    "char_spells":      [],
+    "money":            0
 }
 

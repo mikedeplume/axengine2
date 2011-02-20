@@ -39,6 +39,16 @@ def collide_terrain(player):
         if player.rect.colliderect(tile.rect):
             move_stop(player)
 
+def collect_player(obj):
+    for s in State.groups['player']:
+        if s.rect.colliderect(obj.rect):
+            capture_obj(obj, s)
+
+def capture_obj(obj, player):
+    obj.kill()
+    player.money += 1
+    print "Total money", player.money
+    
 def game_over():
     return
     State.screen.switch('gameover')

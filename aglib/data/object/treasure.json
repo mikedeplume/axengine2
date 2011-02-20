@@ -1,0 +1,7 @@
+{
+    "template": "terrain",
+    "group":    "treasure",
+    "image":    "yen-coin-icon",
+    "pos":      [12,50],
+    "actions":  [  "collect_player" ]
+}
